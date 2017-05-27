@@ -1,0 +1,28 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+    <div class="row column text-center">
+        <h1>National University</h1>
+    </div>
+    <div class="row">
+        <div class="callout primary text-center">
+            <h3>$str["mary"]</h3>
+            <p>Software Engineer, Quality Assurance Manager, Testing Manager</p>
+        </div>
+        <div class="callout primary text-center">
+            <h3>$str["jonathan"]</h3>
+            <p>Software Engineer, Document Manager</p>
+        </div>
+        <div class="callout primary text-center">
+            <h3>$str["adam"]</h3>
+            <p>Project Engineer, Software Engineer</p>
+        </div>
+        <div class="callout primary text-center">
+            <h3>$str["kevin"]</h3>
+            <p>Lead Software Engineer, Client Coordinator</p>
+        </div>
+        <div class="callout primary text-center">
+            <h3>$str["romeo"]</h3>
+            <p>Software Engineer, Database Manager, Configuration Manager</p>
+        </div>
+    </div>
+#end

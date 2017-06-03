@@ -45,7 +45,11 @@ public class Application {
 
 
         get(Path.Web.INDEX,          MainController.mainPage);
+        get(Path.Web.DASHBOARD,      MainController.dashBoardPage);
 
+        get(Path.Web.LOGIN,          UserController.serverLoginPage);
+        post(Path.Web.LOGIN,         UserController.handleLoginPost);
+        post(Path.Web.LOGOUT,        UserController.handleLogoutPost);
 
 
         get("*",                     ViewUtil.notFound);

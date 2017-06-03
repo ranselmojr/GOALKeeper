@@ -29,4 +29,13 @@ public class MainController {
         return ViewUtil.render(request, model, Path.Template.INDEX);
     };
 
+    public static Route dashBoardPage = (Request request, Response response) -> {
+
+        VelocityContext context = new VelocityContext();
+        Map<String, Object> model = new HashMap<>();
+        model.put("str", context);
+        return ViewUtil.render(request, model, Path.Template.DASHBOARD);
+
+    };
+
 }

@@ -1,0 +1,5 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+    <h1>This is the Main Dashboard</h1>
+
+#end

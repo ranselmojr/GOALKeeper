@@ -1,0 +1,18 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<form id="loginForm" method="post">
+    #if($authenticationFailed)
+        <P>Login Incorrect</P>
+    #end
+    <h1>Login Page</h1>
+
+    <label>Username</label>
+    <input type="text" name="username" placeholder="$msg.get("LOGIN_LABEL_USERNAME")" value="" required>
+    <label>Password</label>
+    <input type="password" name="password" placeholder="$msg.get("LOGIN_LABEL_PASSWORD")" value="" required>
+    #if($loginRedirect)
+        <input type="hidden" name="loginRedirect" value="$loginRedirect">
+    #end
+    <input type="submit" value="Login">
+</form>
+#end

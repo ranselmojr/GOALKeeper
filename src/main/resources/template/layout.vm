@@ -16,8 +16,12 @@
     <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
       <button class="menu-icon" type="button" data-toggle></button>
     </span>
-        <strong>Site Title</strong>
+        <a href="/">
+            <strong>GOALkeeper</strong>
+        </a>
     </div>
+    #if($currentUser)
+
     <div id="responsive-menu">
         <div class="top-bar-left">
             <ul class="dropdown vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown" data-auto-height="true" data-animate-height="true">
@@ -49,10 +53,36 @@
         </div>
         <div class="top-bar-right">
             <ul class="menu">
-                <li><button type="button" class="button">Login</button></li>
-                <li><button type="button" class="button">Register</button></li>
+                <li>
+                    Hello, $currentUser
+                </li>
+
+                #if($currentUser)
+                    <li>
+                        <form method="post" action="$WebPath.getLOGOUT()">
+                            <button class="button">Logout</button>
+                        </form>
+                    </li>
+                #end
             </ul>
         </div>
+    #else
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li>
+                    <a href="/login">
+                        <button type="button" class="button">Login</button>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/register">
+                        <button type="button" class="button">Register</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    #end
     </div>
 </div>
 <!-- End Top Bar -->

@@ -52,12 +52,15 @@
             </ul>
         </div>
         <div class="top-bar-right">
-            <ul class="menu">
-                <li>
-                    Hello, $currentUser
-                </li>
+         
 
+            <ul class="menu">
                 #if($currentUser)
+                    <li>
+                        <a href="#">
+                            Hello, $currentUser
+                        </a>
+                    </li>
                     <li>
                         <form method="post" action="$WebPath.getLOGOUT()">
                             <button class="button">Logout</button>

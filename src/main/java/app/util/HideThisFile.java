@@ -11,10 +11,6 @@ package app.util;
  * @author romeo
  */
 public class HideThisFile {
-
-    public static final String DRIVERNAME = "com.mysql.jdbc.Driver";
-    public static final String URL = "jdbc:mysql://{DBHOST}:{DBNAME}";
-    public static final String DBUSER = "{Username}";
-    public static final String DBPASS = "{Password}";
+    public static final String SALT = "$2a$10$swIQs02e.iYTfbgvsNlAEe";
 
 }

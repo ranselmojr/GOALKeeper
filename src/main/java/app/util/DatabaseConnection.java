@@ -25,10 +25,10 @@ public class DatabaseConnection {
      */
     public static Connection getConnection() {
         try {
-            Class.forName(HideThisFile.DRIVERNAME);
+            Class.forName("com.mysql.jdbc.Driver");
             try {
-                con = DriverManager.getConnection(HideThisFile.URL,
-                        HideThisFile.DBUSER, HideThisFile.DBPASS);
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/goalkeeper",
+                        "goalkeeper", "goalkeeper");
             } catch (SQLException ex) {
                 // log an exception. fro example:
                 System.out.println("Failed to create the database connection.");

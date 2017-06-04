@@ -5,6 +5,7 @@ import org.apache.velocity.VelocityContext;
 import spark.*;
 import java.util.*;
 import static app.Application.*;
+import static app.util.RequestUtil.*;
 
 
 /**
@@ -31,10 +32,21 @@ public class MainController {
 
     public static Route dashBoardPage = (Request request, Response response) -> {
 
+
+
+        if(getSessionCurrentUser(request) == null) {
+
+            response.redirect(Path.Web.LOGIN);
+            return null;
+        }
+
+        System.out.println("Test");
+
         VelocityContext context = new VelocityContext();
         Map<String, Object> model = new HashMap<>();
         model.put("str", context);
         return ViewUtil.render(request, model, Path.Template.DASHBOARD);
+
 
     };
 

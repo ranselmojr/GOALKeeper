@@ -3,6 +3,7 @@ package app.Controller;
 import app.Model.UserAccount;
 import app.util.Path;
 import app.util.ViewUtil;
+import org.apache.commons.lang.ObjectUtils;
 import org.mindrot.jbcrypt.BCrypt;
 import spark.Request;
 import spark.Response;
@@ -28,7 +29,6 @@ public class UserController {
     public static Route handleLoginPost = (Request request, Response response) -> {
         Map<String, Object> model = new HashMap<>();
 
-        UserAccount user = new UserAccount();
         UserAccount userInfo = new UserAccount();
         boolean authenticated = false;
 
@@ -46,7 +46,6 @@ public class UserController {
             response.redirect(getQueryLoginRedirect(request));
         }
         response.redirect(Path.Web.DASHBOARD);
-        //return ViewUtil.render(request, model, Path.Template.DASHBOARD);
         return null;
     };
 
@@ -64,5 +63,47 @@ public class UserController {
             request.session().attribute("loginRedirect", request.pathInfo());
             response.redirect(Path.Web.DASHBOARD);
         }
+    };
+
+    public static Route registerPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.REGISTER);
+
+    };
+    public static Route handleRegisterPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        int zipcode = 00000;
+        String name = request.queryParams("fullname");
+        String username = request.queryParams("username");
+        String email = request.queryParams("email");
+        String password = request.queryParams("password");
+        String homephone = request.queryParams("homephone");
+        String mobilephone = request.queryParams("mobilephone");
+        String line1 = request.queryParams("line1");
+        String line2 = request.queryParams("line2");
+        String city = request.queryParams("city");
+        String state = request.queryParams("state");
+        try{
+            zipcode = Integer.parseInt(request.queryParams("zipcode"));
+        }catch(NumberFormatException e){
+
+        }
+
+        UserAccount newUser = new UserAccount(name,username,password, email,
+                homephone, mobilephone, line1, line2, city, state, zipcode);
+
+        System.out.println(newUser.getPhone());
+
+        boolean userResult = newUser.addAccount(newUser);
+
+        if(!userResult){
+            model.put("someError", true);
+            return ViewUtil.render(request, model, Path.Template.REGISTER);
+        }
+
+        request.session().attribute("userRegistered", true);
+        response.redirect(Path.Web.LOGIN);
+        return null;
+
     };
 }

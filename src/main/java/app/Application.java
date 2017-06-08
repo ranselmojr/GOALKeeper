@@ -32,7 +32,7 @@ public class Application {
         port(8080);
 
         staticFiles.location("/public");
-        staticFiles.expireTime(600L);
+        //staticFiles.expireTime(600L);
         enableDebugScreen();  //Remove this for production
 
         // Set up before-filters (called before each get/post)
@@ -50,6 +50,8 @@ public class Application {
         get(Path.Web.LOGIN,          UserController.serverLoginPage);
         post(Path.Web.LOGIN,         UserController.handleLoginPost);
         post(Path.Web.LOGOUT,        UserController.handleLogoutPost);
+        get(Path.Web.REGISTER,       UserController.registerPage);
+        post(Path.Web.REGISTER,       UserController.handleRegisterPage);
 
 
         get("*",                     ViewUtil.notFound);

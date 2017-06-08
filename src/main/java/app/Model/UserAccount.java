@@ -1,11 +1,11 @@
 package app.Model;
 
 import app.util.DatabaseConnection;
+import app.util.HideThisFile;
+import org.mindrot.jbcrypt.BCrypt;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+
 
 /**
  * Created by Romeo on 6/1/2017.
@@ -75,14 +75,13 @@ public class UserAccount {
     }
 
 
-    public UserAccount(int id, String name, String username, String username_lower,
-                String password, String email, String phone, String mobile,
-                String line1, String line2, String city, String state, int zipcode){
-        this.userID = id;
+    public UserAccount(String name, String username, String password,
+                       String email, String phone, String mobile, String line1,
+                       String line2, String city, String state, int zipcode){
         this.name = name;
         this.username = username;
-        this.username_lower = username_lower;
-        this.password = password;
+        this.username_lower = username.toLowerCase();
+        this.password = BCrypt.hashpw(password, HideThisFile.SALT);
         this.email = email;
         this.phone = phone;
         this.mobile = mobile;
@@ -207,6 +206,7 @@ public class UserAccount {
         }
         catch (Exception e) {
             System.out.println(e);
+            return false;
         }
         return true;
     }

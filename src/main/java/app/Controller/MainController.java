@@ -40,8 +40,6 @@ public class MainController {
             return null;
         }
 
-        System.out.println("Test");
-
         VelocityContext context = new VelocityContext();
         Map<String, Object> model = new HashMap<>();
         model.put("str", context);

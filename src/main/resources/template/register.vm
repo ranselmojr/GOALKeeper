@@ -1,0 +1,95 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+    #if($someError)
+        <div data-closable class="callout alert-callout-border alert radius">
+            <strong>Error</strong> - Something Went Wrong!!!
+            <p>Email and/or Username is already taken</p>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    #end
+
+    <form method="post">
+        <div class="form-icons">
+            <h4>Register for an account</h4>
+
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-user"></i>
+              </span>
+                <input class="input-group-field" type="text" name="fullname" placeholder="Full name" required>
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-user"></i>
+              </span>
+                <input class="input-group-field" type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-envelope"></i>
+              </span>
+                <input class="input-group-field" type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-key"></i>
+              </span>
+                <input class="input-group-field" type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-phone"></i>
+              </span>
+                <input class="input-group-field" type="tel" name="homephone" placeholder="Home Phone">
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-mobile"></i>
+              </span>
+                <input class="input-group-field" type="tel" name="mobilephone" placeholder="Mobile Phone">
+            </div>
+            <input type="submit" value="Sign Up" class="login-button">
+            <br>
+            <br>
+            <h4>Address Information (optional)</h4>
+
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-address-book"></i>
+              </span>
+                <input class="input-group-field" type="text" name="line1" placeholder="Line 1">
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-address-book"></i>
+              </span>
+                <input class="input-group-field" type="text" name="line2" placeholder="Line 2">
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-address-book"></i>
+              </span>
+                <input class="input-group-field" type="text" name="city" placeholder="City">
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-address-book"></i>
+              </span>
+                <input class="input-group-field" type="text" name="state" placeholder="State">
+            </div>
+            <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-address-book"></i>
+              </span>
+                <input class="input-group-field" type="text" name="zipcode" placeholder="Zip Code">
+            </div>
+            <input type="submit" value="Sign Up" class="login-button">
+        </div>
+
+    </form>
+
+#end

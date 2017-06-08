@@ -2,17 +2,45 @@
 #@mainLayout()
 <form id="loginForm" method="post">
     #if($authenticationFailed)
-        <P>Login Incorrect</P>
+        <div data-closable class="callout alert-callout-border alert radius">
+            <strong>Error</strong> - Login Incorrect
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     #end
-    <h1>Login Page</h1>
 
-    <label>Username</label>
-    <input type="text" name="username" placeholder="$msg.get("LOGIN_LABEL_USERNAME")" value="" required>
-    <label>Password</label>
-    <input type="password" name="password" placeholder="$msg.get("LOGIN_LABEL_PASSWORD")" value="" required>
-    #if($loginRedirect)
-        <input type="hidden" name="loginRedirect" value="$loginRedirect">
+    #if($userRegistered)
+        <div data-closable class="callout alert-callout-border success">
+            <strong>Yay!</strong> - You are Registered!
+            <p>Please Login</p>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     #end
-    <input type="submit" value="Login">
+
+    <div class="form-icons">
+        <h4>Please Login</h4>
+
+        <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-user"></i>
+              </span>
+            <input class="input-group-field" type="text" name="username" placeholder="Username" required>
+        </div>
+
+        <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-key"></i>
+              </span>
+            <input class="input-group-field" type="password" name="password" placeholder="Password" required>
+        </div>
+
+        #if($loginRedirect)
+            <input type="hidden" name="loginRedirect" value="$loginRedirect">
+        #end
+        <input type="submit" value="Login" class="login-button">
+    </div>
 </form>
 #end

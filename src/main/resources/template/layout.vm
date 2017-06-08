@@ -5,17 +5,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Goalkeeper</title>
-    <link rel="stylesheet" href="/css/foundation.css">
-    <link rel="stylesheet" href="/css/app.css">
+
+    <link rel="stylesheet" href="/css/foundation.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/css/app.css" type="text/css">
+
+
 </head>
 <body>
 
 <!-- Start Top Bar -->
-<div class="top-bar foundation-5-top-bar">
+<div class="top-menu">
+    <div class="top-bar foundation-5-top-bar">
     <div class="top-bar-title">
-    <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-      <button class="menu-icon" type="button" data-toggle></button>
-    </span>
+        <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+          <button class="menu-icon" type="button" data-toggle></button>
+        </span>
         <a href="/">
             <strong>GOALkeeper</strong>
         </a>
@@ -55,18 +60,16 @@
 
 
             <ul class="menu">
-                #if($currentUser)
-                    <li>
-                        <a href="#">
-                            Hello, $currentUser
-                        </a>
-                    </li>
-                    <li>
-                        <form method="post" action="$WebPath.getLOGOUT()">
-                            <button class="button">Logout</button>
-                        </form>
-                    </li>
-                #end
+                <li>
+                    <a href="#">
+                        Hello, $currentUser
+                    </a>
+                </li>
+                <li>
+                    <form method="post" action="/logout/">
+                        <button class="button">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
     #else
@@ -86,7 +89,8 @@
             </ul>
         </div>
     #end
-    </div>
+</div>
+</div>
 </div>
 <!-- End Top Bar -->
 <!-- Begin Body Content -->

@@ -6,6 +6,9 @@ import spark.*;
 import java.util.*;
 import static app.Application.*;
 import static app.util.RequestUtil.*;
+import java.util.Properties;
+
+import javax.mail.Session;
 
 
 /**
@@ -46,6 +49,22 @@ public class MainController {
         return ViewUtil.render(request, model, Path.Template.DASHBOARD);
 
 
+    };
+
+    public static Route testPage = (Request request, Response response) -> {
+
+        try
+        {
+            PostMail objPostMail = new PostMail();
+            String[] objStringArray = new String[1];
+            objStringArray[0] = new String("romeo.anselmojr@gmail.com");
+            objPostMail.postMail(objStringArray, "Hi Subject", "Hi this is Romeo");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
     };
 
 }

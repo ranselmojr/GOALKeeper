@@ -40,7 +40,13 @@
         #if($loginRedirect)
             <input type="hidden" name="loginRedirect" value="$loginRedirect">
         #end
-        <input type="submit" value="Login" class="login-button">
+        <div class="input-group">
+            <input type="submit" value="Login" class="login-button">
+        </div>
+        <div class="input-group">
+            <a href="/forgot">Forgot Password?</a>
+
+        </div>
     </div>
 </form>
 #end

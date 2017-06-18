@@ -33,6 +33,26 @@ public class UserAccount {
     public UserAccount(){
 
     }
+    public UserAccount(String name, String username, String password,
+                       String email, String phone, String mobile, String line1,
+                       String line2, String city, String state, int zipcode){
+        this.name = name;
+        this.username = username;
+        this.username_lower = username.toLowerCase();
+        this.password = BCrypt.hashpw(password, HideThisFile.SALT);
+        this.email = email;
+        this.phone = phone;
+        this.mobile = mobile;
+        this.line1 = line1;
+        this.line2 = line2;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+    }
+
+    public UserAccount(String email){
+        this.email = email;
+    }
 
     public int getUserID(){
         return userID;
@@ -75,23 +95,21 @@ public class UserAccount {
     }
 
 
-    public UserAccount(String name, String username, String password,
-                       String email, String phone, String mobile, String line1,
-                       String line2, String city, String state, int zipcode){
-        this.name = name;
-        this.username = username;
-        this.username_lower = username.toLowerCase();
-        this.password = BCrypt.hashpw(password, HideThisFile.SALT);
-        this.email = email;
-        this.phone = phone;
-        this.mobile = mobile;
-        this.line1 = line1;
-        this.line2 = line2;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
-    }
+    public void resetPassword(String email, String password){
 
+
+        String sql = "update user_account " +
+                "set password = '" +
+                BCrypt.hashpw(password, HideThisFile.SALT) +
+                "' WHERE email='" + email + "'";
+        try {
+            con = DatabaseConnection.getConnection();
+            stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
 
 
@@ -173,8 +191,7 @@ public class UserAccount {
                 preparedStmt.execute();
                 System.out.println("User Registered!!!");
 
-                String addressSQL = "select id from user_account where username_lower = '" +
-                        user.username_lower + " ' ";
+                String addressSQL = "SELECT LAST_INSERT_ID()";
 
                 stmt = con.createStatement();
                 rs = stmt.executeQuery(sql1);
@@ -182,6 +199,7 @@ public class UserAccount {
                 while (rs.next()) {
                     user_accountid = rs.getInt(1);
                 }
+
 
                 String addAdressSQL = "insert into address(user_id, line1, line2," +
                         "city, state, zipcode) "
@@ -211,6 +229,26 @@ public class UserAccount {
         return true;
     }
 
+    public boolean isEmailExist(){
+
+        String sql = "select * from user_account " +
+                " where email = '"+ email +"'";
+
+
+        try {
+            con = DatabaseConnection.getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(sql);
+
+            if(rs.first()){
+                return true;
+            }
+            con.close();
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
 
 
 }

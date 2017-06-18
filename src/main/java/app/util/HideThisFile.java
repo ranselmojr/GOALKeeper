@@ -12,5 +12,6 @@ package app.util;
  */
 public class HideThisFile {
     public static final String SALT = "$2a$10$swIQs02e.iYTfbgvsNlAEe";
+    public static final String PASSWORD ="goalkeeper360";
 
 }

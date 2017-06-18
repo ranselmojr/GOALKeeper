@@ -1,0 +1,40 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+
+#if($sentSuccess)
+    <div data-closable class="callout alert-callout-border success">
+        <strong>Info</strong> - Please check your Email!!!
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+#end
+
+#if($userNotExist)
+    <div data-closable class="callout alert-callout-border alert radius">
+        <strong>Error</strong> - E-mail Address not Found!!!
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+#end
+
+<form id="loginForm" method="post">
+
+    <div class="form-icons">
+        <h4>Please Enter your E-mail Address</h4>
+
+        <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-envelope"></i>
+              </span>
+            <input class="input-group-field" type="text" name="email" placeholder="E-mail Address" required>
+        </div>
+
+        <div class="input-group">
+            <input type="submit" value="Reset Password" class="login-button">
+        </div>
+
+    </div>
+</form>
+#end

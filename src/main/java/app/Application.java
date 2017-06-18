@@ -35,6 +35,7 @@ public class Application {
         //staticFiles.expireTime(600L);
         enableDebugScreen();  //Remove this for production
 
+
         // Set up before-filters (called before each get/post)
         before("*",                  Filters.addTrailingSlashes);
         before("*",                  Filters.handleLocaleChange);
@@ -51,7 +52,15 @@ public class Application {
         post(Path.Web.LOGIN,         UserController.handleLoginPost);
         post(Path.Web.LOGOUT,        UserController.handleLogoutPost);
         get(Path.Web.REGISTER,       UserController.registerPage);
-        post(Path.Web.REGISTER,       UserController.handleRegisterPage);
+        post(Path.Web.REGISTER,      UserController.handleRegisterPage);
+        get(Path.Web.FORGOT,         UserController.forgotPage);
+        post(Path.Web.FORGOT,        UserController.handleForgotPage);
+        get(Path.Web.RESET,          UserController.resetPage);
+        post(Path.Web.RESET,         UserController.handleResetPage);
+
+
+
+        get(Path.Web.TEST,           MainController.testPage);
 
 
         get("*",                     ViewUtil.notFound);

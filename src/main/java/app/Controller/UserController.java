@@ -2,6 +2,7 @@ package app.Controller;
 
 import app.Model.UserAccount;
 import app.util.Path;
+import app.util.PostMail;
 import app.util.ViewUtil;
 import org.apache.commons.lang.ObjectUtils;
 import org.mindrot.jbcrypt.BCrypt;
@@ -101,9 +102,97 @@ public class UserController {
             return ViewUtil.render(request, model, Path.Template.REGISTER);
         }
 
+        String message = "<p><b>Hello " + name + ",</b></p>" +
+                "<p>You are now a Registered User in GOALkeeper</p>";
+        try
+        {
+            PostMail objPostMail = new PostMail();
+            String[] objStringArray = new String[1];
+            objStringArray[0] = new String(email);
+            objPostMail.postMail(objStringArray, "Welcome to GOALkeeper", message);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
         request.session().attribute("userRegistered", true);
         response.redirect(Path.Web.LOGIN);
         return null;
 
+    };
+
+    public static Route forgotPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.FORGOT);
+
+    };
+
+    public static Route handleForgotPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+
+        String email = request.queryParams("email");
+
+
+        UserAccount user = new UserAccount(email);
+
+        if(user.isEmailExist()){
+            model.put("sentSuccess", true);
+            String url = request.host();
+            String message = "<h3>Password Reset</h3>"+
+                    "<p>Please click the link " +
+                    "<a href=\"http://" + url + "/reset/" + email + "\">Reset Password</a></p>";
+
+            try
+            {
+                PostMail objPostMail = new PostMail();
+                String[] objStringArray = new String[1];
+                objStringArray[0] = new String(email);
+                objPostMail.postMail(objStringArray, "GOALkeeper Password Reset", message);
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }else{
+            model.put("userNotExist", true);
+        }
+        return ViewUtil.render(request, model, Path.Template.FORGOT);
+    };
+
+    public static Route resetPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.RESET);
+    };
+
+    public static Route handleResetPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+
+        String password = request.queryParams("password");
+        String confirm = request.queryParams("confirm_password");
+        String email = request.params("email");
+
+
+        if(!password.equals(confirm) || password.length() <= 7){
+            model.put("confirmNotMatched", true);
+            return ViewUtil.render(request, model, Path.Template.RESET);
+        }else{
+            UserAccount user = new UserAccount();
+            user.resetPassword(email, password);
+            String message = "<h3>Your password has been reset</h3>";
+            try
+            {
+                PostMail objPostMail = new PostMail();
+                String[] objStringArray = new String[1];
+                objStringArray[0] = new String(email);
+                objPostMail.postMail(objStringArray, "Password Reset Confirmation", message);
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        response.redirect(Path.Web.LOGIN);
+        return null;
     };
 }

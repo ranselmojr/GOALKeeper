@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goalkeeper</title>
+
+    <link rel="stylesheet" href="/css/foundation.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/css/app.css" type="text/css">
+
+
+</head>
+<body>
+
+#if($confirmNotMatched)
+    <div data-closable class="callout alert-callout-border alert radius">
+        <strong>Error</strong> - Password does not match or too short!!!
+        <p>Must be 8 characters or more</p>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+#end
+
+<form id="loginForm" method="post">
+
+    <div class="form-icons">
+        <h4>Please Enter New Password</h4>
+
+        <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-key"></i>
+              </span>
+            <input class="input-group-field" type="password" name="password" placeholder="New Password" required>
+        </div>
+        <div class="input-group">
+              <span class="input-group-label">
+                <i class="fa fa-key"></i>
+              </span>
+            <input class="input-group-field" type="password" name="confirm_password" placeholder="Confirm Password" required>
+        </div>
+
+        <div class="input-group">
+            <input type="submit" value="Reset" class="login-button">
+        </div>
+
+    </div>
+</form>
+
+
+<script src="/js/vendor/jquery-2.1.4.min.js"></script>
+<script src="/js/vendor/foundation.js"></script>
+<script>
+    $(document).foundation();
+
+</script>
+</body>
+</html>

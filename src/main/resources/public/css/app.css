@@ -32,6 +32,12 @@
     border-color: #fefefe transparent transparent;
 }
 
+.foundation-5-top-bar .menu a i{
+    color: #1779ba;
+}
+
+
+
 /* Register Format */
 
 form .form-icons {
@@ -132,6 +138,36 @@ form .form-icons .fa {
 .alert-callout-border.warning strong {
     color: #ffae00;
 }
+
+
+/* Footer Meenu */
+
+.mobile-app-icon-bar {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    background: #fefefe;
+}
+
+.mobile-app-icon-bar button {
+    padding: 1.25rem;
+    cursor: pointer;
+}
+
+.mobile-app-icon-bar button svg,
+.mobile-app-icon-bar button i,
+.mobile-app-icon-bar button img {
+    font-size: 2rem;
+    max-height: 2rem;
+    max-width: 2rem;
+}
+
 
 
 

@@ -57,6 +57,7 @@ public class Application {
         post(Path.Web.FORGOT,        UserController.handleForgotPage);
         get(Path.Web.RESET,          UserController.resetPage);
         post(Path.Web.RESET,         UserController.handleResetPage);
+        get(Path.Web.GOAL,           GoalController.goalPage);
 
 
 

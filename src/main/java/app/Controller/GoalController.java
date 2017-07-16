@@ -1,4 +1,4 @@
-package main.java.app.Controller;
+package app.Controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,14 +6,14 @@ import java.util.Map;
 
 import org.apache.velocity.VelocityContext;
 
-import main.java.app.Model.Goal;
-import main.java.app.util.Path;
-import main.java.app.util.ViewUtil;
+import app.Model.Goal;
+import app.util.Path;
+import app.util.ViewUtil;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
-import static main.java.app.util.RequestUtil.*;
+import static app.util.RequestUtil.*;
 
 
 /**

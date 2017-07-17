@@ -7,9 +7,9 @@
     </div>
     
     <ul>
-  #foreach( $goal in $str["GoalList"])
   
   <div class="row">
+  #foreach( $goal in $str["GoalList"])
         <div class="callout primary text-center">
        	 <h3>Goal $foreach.count</h3>
             <p>$goal.getGoalText()</p>   

@@ -1,0 +1,32 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+
+
+<div class="row column text-center">
+        <h1>My Goal List</h1>
+    </div>
+    
+    <ul>
+  #foreach( $goal in $str["GoalList"])
+  
+  <div class="row">
+        <div class="callout primary text-center">
+       	 <h3>Goal $foreach.count</h3>
+            <p>$goal.getGoalText()</p>   
+        </div>
+  
+  #end
+</ul>
+    
+    
+    
+        
+        
+       
+       
+    </div>
+
+
+
+
+#end

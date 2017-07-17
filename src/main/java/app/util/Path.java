@@ -17,6 +17,7 @@ public class Path {
         @Getter public static final String FORGOT = "/forgot/";
         @Getter public static final String TEST = "/test/";
         @Getter public static final String RESET = "/reset/:email/";
+        @Getter public static final String GOAL = "/goal/";
 
 
     }
@@ -29,6 +30,7 @@ public class Path {
         public final static String REGISTER = "/template/register.vm";
         public final static String FORGOT = "/template/forgot.vm";
         public final static String RESET = "/template/reset.vm";
+        public final static String GOAL = "/template/goal.vm";
 
         public static final String NOT_FOUND = "/template/notFound.vm";
     }

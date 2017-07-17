@@ -1,6 +1,6 @@
-package main.java.app.Model;
+package app.Model;
 
-import main.java.app.util.DatabaseConnection;
+import app.util.DatabaseConnection;
 import java.sql.*;
 import java.util.ArrayList;
 

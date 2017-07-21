@@ -32,7 +32,8 @@
             <ul class="dropdown vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown" data-auto-height="true" data-animate-height="true">
                 #if($currentUser)
                 <li>
-                    <a href="#"><button><i class="fa fa-tasks" aria-hidden="true"></i></button>My Goals</a>
+
+                    <a href="/goal"><button><i class="fa fa-tasks" aria-hidden="true"></i></button>My Goals</a></a>
                     <ul class="menu">
                         <li><a href="#">One</a></li>
                         <li><a href="#">Two</a></li>

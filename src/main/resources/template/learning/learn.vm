@@ -1,0 +1,9 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<ul class="list-group">
+    <a href="http://www.lig360.com/about/" target="_blank"><li class="list-group-item">About Leadership Insight Group</li></a>
+    <a href="http://www.lig360.com/pdf/xmarksthespot.pdf" target="_blank"><li class="list-group-item">Article #1 - Developing and Retaining Emerging Leaders</li></a>
+    <a href="http://www.lig360.com/pdf/winningways.pdf" target="_blank"><li class="list-group-item">Article #2 - Winning Ways Influence Tactics</li></a>
+    <a href="http://www.lig360.com/pdf/QUESTIONofLEADERSHIP.pdf" target="_blank"><li class="list-group-item">Article #3 - A Question of Leadership</li></a>
+</ul>
+#end

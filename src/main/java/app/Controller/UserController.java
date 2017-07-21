@@ -42,7 +42,7 @@ public class UserController {
             return ViewUtil.render(request, model, Path.Template.LOGIN);
         }
         model.put("authenticationSucceeded", true);
-        request.session().attribute("currentUser", userInfo.getName());
+        request.session().attribute("currentUser", userInfo.getUserName());
         if (getQueryLoginRedirect(request) != null) {
             response.redirect(getQueryLoginRedirect(request));
         }

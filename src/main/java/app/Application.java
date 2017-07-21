@@ -20,19 +20,12 @@ import static spark.debug.DebugScreen.*;
  */
 public class Application {
 
-    // Declare dependencies
-    //public static BookDao bookDao;
-    //public static UserDao userDao;
-
     public static void main(String[] args) {
-        // Instantiate your dependencies
-        //bookDao = new BookDao();
-        //userDao = new UserDao();
 
         port(8080);
 
         staticFiles.location("/public");
-        //staticFiles.expireTime(600L);
+        staticFiles.expireTime(600L);
         enableDebugScreen();  //Remove this for production
 
 
@@ -47,6 +40,12 @@ public class Application {
 
         get(Path.Web.INDEX,          MainController.mainPage);
         get(Path.Web.DASHBOARD,      MainController.dashBoardPage);
+        get(Path.Web.FEEDBACK,       MainController.feedbackPage);
+        get(Path.Web.ABOUT,          MainController.aboutPage);
+
+        get(Path.Web.LEARN,          LearningController.learnPage);
+        get(Path.Web.QUESTION,       LearningController.questionPage);
+        post(Path.Web.QUESTION,      LearningController.handleQuestionPage);
 
         get(Path.Web.LOGIN,          UserController.serverLoginPage);
         post(Path.Web.LOGIN,         UserController.handleLoginPost);
@@ -59,8 +58,6 @@ public class Application {
         post(Path.Web.RESET,         UserController.handleResetPage);
 
 
-
-        get(Path.Web.TEST,           MainController.testPage);
 
 
         get("*",                     ViewUtil.notFound);

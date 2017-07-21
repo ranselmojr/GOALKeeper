@@ -1,5 +1,6 @@
 package app.Controller;
 
+import app.Model.UserAccount;
 import app.util.*;
 import org.apache.velocity.VelocityContext;
 import spark.*;
@@ -21,14 +22,12 @@ public class MainController {
         VelocityContext context = new VelocityContext();
 
         Map<String, Object> model = new HashMap<>();
-        context.put("mainTitle", "Romeo");
         context.put("mary", "Mary Coronado");
         context.put("adam", "Adam Swogger");
         context.put("jonathan", "Jonathan Chandler");
         context.put("kevin", "Kevin Detweiler");
         context.put("romeo", "Romeo Anselmo");
         model.put("str", context);
-
 
         return ViewUtil.render(request, model, Path.Template.INDEX);
     };
@@ -51,20 +50,22 @@ public class MainController {
 
     };
 
-    public static Route testPage = (Request request, Response response) -> {
+    public static Route feedbackPage = (Request request, Response response) -> {
+        if(getSessionCurrentUser(request) == null) {
 
-        try
-        {
-            PostMail objPostMail = new PostMail();
-            String[] objStringArray = new String[1];
-            objStringArray[0] = new String("romeo.anselmojr@gmail.com");
-            objPostMail.postMail(objStringArray, "Hi Subject", "Hi this is Romeo");
-        }catch (Exception e)
-        {
-            e.printStackTrace();
+            response.redirect(Path.Web.LOGIN);
+            return null;
         }
 
-        return null;
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.FEEDBACK);
     };
 
-}
+    public static Route aboutPage = (Request request, Response response) -> {
+
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.ABOUT);
+    };
+
+
+    }

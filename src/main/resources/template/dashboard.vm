@@ -1,5 +1,11 @@
 #parse("/template/layout.vm")
 #@mainLayout()
-    <h1>This is the Main Dashboard</h1>
+
+
+<h2>David B. Baldwin</h2>
+<h3>PRESIDENT ~ LEADERSHIP INSIGHT GROUP</h3>
+
+<strong>Executive Summary</strong>
+<p width="300 px" class="text-left">David has delivered proven ROI leadership development work resulting in financial business success for Fortune 500 companies in Australia, Belgium, Brazil, Canada, China, El Salvador, England, France, Germany, Indonesia, Ireland, Mexico, Russia, Thailand and throughout the United States to more than 7,500 executive participants. David is certified in over 100 self-report and 360 assessment instruments, simulations, and experiential activities. He has designed and delivered over 350 leadership interventions.</p>
 
 #end

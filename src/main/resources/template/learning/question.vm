@@ -1,0 +1,18 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+
+<section class="contact-us-section">
+    <h1 class="contact-us-header">Ask Question</h1>
+    <form class="contact-us-form" method="post">
+        <input class="input-group-field" name="fullname" type="text" placeholder="Full name" required>
+        <input class="input-group-field" name="email" type="email" placeholder="Email" required>
+        <textarea class="input-group-field" name="message" id="" rows="12" placeholder="Type your message here"></textarea>
+        <div class="contact-us-form-actions">
+            <input type="submit" class="button" value="Submit" />
+        </div>
+    </form>
+</section>
+
+
+
+#end

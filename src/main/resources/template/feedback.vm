@@ -1,13 +1,13 @@
 #parse("/template/layout.vm")
 #@mainLayout()
     <div class="callout secondary text-center">
-        <a class="button button-rounded-hover" href="tel:16263736138">626-373-6138</a>
+        <a class="button button-rounded-hover" href="tel:1##########">###-###-####</a>
     </div>
     <div class="callout secondary text-center">
         <a class="button button-rounded-hover" href="mailto:kevindet@hotmail.com?Subject=Feedback" target="_top">EMail Feedback</a>
     </div>
     <div class="callout secondary text-center">
-        <a class="button button-rounded-hover" href="facetime:16263736138">Connect using FaceTime</a>
+        <a class="button button-rounded-hover" href="facetime:1##########">Connect using FaceTime</a>
     </div>
 
 

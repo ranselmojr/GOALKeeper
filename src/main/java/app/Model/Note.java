@@ -1,4 +1,4 @@
-package main.java.app.Model;
+package app.Model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.sql.*;
 
-import main.java.app.util.DatabaseConnection;
+import app.util.DatabaseConnection;
 
 /**
  * Created by Kevin on 7/16/2017.

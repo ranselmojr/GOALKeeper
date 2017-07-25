@@ -1,11 +1,11 @@
-package main.java.app.Model;
+package app.Model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import main.java.app.util.DatabaseConnection;
+import app.util.DatabaseConnection;
 
 public class Relationship {
 

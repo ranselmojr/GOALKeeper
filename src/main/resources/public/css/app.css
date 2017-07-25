@@ -381,4 +381,9 @@ form .form-icons .fa {
     opacity: 0.25;
 }
 
+.input.login-button {
+    border:transparent;
+    padding-bottom:1px;
+}
+
 /* End Hover Button link */

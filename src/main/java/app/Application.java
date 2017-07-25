@@ -1,7 +1,7 @@
-package main.java.app;
+package app;
 
-import main.java.app.Controller.*;
-import main.java.app.util.*;
+import app.Controller.*;
+import app.util.*;
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.*;
 

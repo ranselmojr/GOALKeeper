@@ -1,0 +1,102 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+
+
+<div class="text-center">
+<a href="/relationshiplist">
+	<button type="button" class="button">Back</button>
+</a>
+
+<a href="/relationshipedit/$str["Relationship"].getRelid()">
+	<button type="button" class="button">Edit</button>
+</a>
+
+<a href="/relationshipdelete/$str["Relationship"].getRelid()">
+	<button type="button" onclick="return confirmDelete()" class="button">Delete</button>
+</a>
+
+</div>
+
+
+
+<br>
+<div class="row column text-center">
+	<h1>$str["Relationship"].getFirstname() $str["Relationship"].getLastname()</h1>
+</div>
+
+
+<hr>
+
+<div class="row column text-center">
+	<h1>Get Feedback from $str["Relationship"].getFirstname()</h1>
+</div>
+<div class="row column text-center">
+<a class="button" href="mailto:$str["Relationship"].getEmail()?Subject=Feedback" target="_top">Email</a>
+<a class="button" href="tel:$str["Relationship"].getPhone()">Call</a>
+<a href="facetime:$str["Relationship"].getPhone()"><button type="button" class="button">FaceTime</button></a>
+</div>
+<hr>
+
+<div class="row column text-center">
+<div class="row column text-center">
+	<h1>Phone</h1>
+</div>
+<h1>$str["Relationship"].getPhone()</h1>        
+<div class="row column text-center">
+</div>
+
+<hr>
+
+<div class="row column text-center">
+	<h1>Email</h1>
+</div>
+<div class="row column text-center">
+<h1>$str["Relationship"].getEmail()</h1>
+</div>
+
+</div>
+
+<hr>    
+
+<div class="row column text-center">
+	<h1>Notes</h1>
+</div>
+
+
+        
+<div class="row">
+
+#if($str["NoteList"].size()==0)
+<div class="row column text-center">
+	<h4><i>Add a new Note to Track Relationship Feedback</i></h4>
+</div>
+#else
+#foreach( $note in $str["NoteList"])
+<a href="/relnoteedit/$note.getNoteid()">
+	<div class="callout primary text-center">
+		<h3>$note.getNoteDate()</h3>
+		<p>$note.getNote()</p>   
+	</div></a>
+	#end
+#end  
+
+<div class="text-center">
+<a href="/relnoteadd/$str["Relationship"].getRelid()">
+	<button type="button" class="button">Add Note</button>
+</a>
+</div>
+</div>
+<hr>
+
+#end
+
+<script>
+function confirmDelete() {
+	var r = confirm("Continue delete?");
+	if (r == true) {
+   		return true;
+	} else {
+    	return false;
+	}
+}
+</script>

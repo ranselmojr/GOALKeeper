@@ -1,0 +1,27 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<div class="row column text-center">
+	<h1>Add a New Behavior</h1>
+</div>
+<form name="behaviorAdd" method="post" onsubmit="return validateForm()">
+	<div>Behavior: 
+		<input type="text" name="behavior" value=""><br>
+	</div>
+	<div class="text-center">
+		<input style="border:transparent;padding-bottom:1px;width:100px" class="login-button" type="submit" value="Save">
+		<a href="/goalform/$str["Goal"].getGoalid()">
+			<button type="button" class="login-button" style="width:100px">Cancel</button>
+		</a>
+	</div>
+</form>
+#end
+
+<script>
+function validateForm() {
+    var x = document.forms["behaviorAdd"]["behavior"].value;
+    if (x == "") {
+        alert("Behavior must be filled out");
+        return false;
+    }
+}
+</script>

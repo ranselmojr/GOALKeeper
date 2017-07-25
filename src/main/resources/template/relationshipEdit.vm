@@ -1,0 +1,61 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<div class="row column text-center">
+	<h1>Edit a Relationship</h1>
+</div>
+<form name="relationshipEdit" method="post" onsubmit="return validateForm()">
+	<div>First Name: 
+		<input type="text" name="fname" value="$str["Relationship"].getFirstname()"><br>
+	</div>
+	<div>Last Name: 
+		<input type="text" name="lname" value="$str["Relationship"].getLastname()"><br>
+	</div>
+	<div>Phone: 
+		<input type="tel" name="phone" value="$str["Relationship"].getPhone()"><br>
+	</div>
+	<div>Email: 
+		<input type="email" name="email" value="$str["Relationship"].getEmail()"><br>
+	</div>
+	<div>Category:
+		<select name="category">
+			<option selected value="$str["Relationship"].getCategory()">$str["Relationship"].getCategory()</option>
+  			<option value="Superior">Superior</option>
+  			<option value="Peer">Peer</option>
+  			<option value="Direct Report">Direct Report</option>
+ 		</select>
+ 	</div>
+	
+	<div class="text-center">
+		<input style="border:transparent;padding-bottom:1px;width:100px" class="login-button" type="submit" value="Save">
+		<a href="/relationshipview/$str["Relationship"].getRelid()">
+			<button type="button" class="login-button" style="width:100px">Cancel</button>
+		</a>
+	</div>
+</form>
+#end
+
+<script>
+function validateForm() {
+    var a = document.forms["relationshipEdit"]["fname"].value;
+    var b = document.forms["relationshipEdit"]["lname"].value;
+    var c = document.forms["relationshipEdit"]["phone"].value;
+    var d = document.forms["relationshipEdit"]["email"].value;
+    var e = document.forms["relationshipEdit"]["category"].value;
+    if (a == "") {
+        alert("First name must be filled out");
+        return false;
+    } else if (b == "") {
+    	alert("Last name must be filled out");
+        return false;
+    } else if (c == "") {
+    	alert("Phone must be filled out");
+        return false;
+    } else if (d == "") {
+    	alert("Email must be filled out");
+        return false;
+    } else if (e == "") {
+    	alert("Category must be filled out");
+        return false;
+    }
+}
+</script>

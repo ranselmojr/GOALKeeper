@@ -1,0 +1,119 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+
+
+<div class="text-center">
+	<a href="/goallist">
+		<button type="button" class="button">Back</button>
+	</a>
+
+	<a href="/goaledit/$str["Goal"].getGoalid()">
+		<button type="button" class="button">Edit</button>
+	</a>
+
+	<a href="/goaldelete/$str["Goal"].getGoalid()">
+		<button type="button" onclick="return confirmDelete()" class="button">Delete</button>
+	</a>
+
+	<a href="/relationshiplist/">
+		<button type="button" class="button">Feedback</button>
+	</a>
+</div>
+
+
+<br>
+<div class="row column text-center">
+	<h1>$str["Goal"].getGoalText()</h1>
+</div>
+
+
+<hr>
+
+<div class="row column text-center">
+	<h1>Percent Done</h1>
+</div>
+        
+<div class="row column text-center">
+	<h1>$str["Status"].getPercent_done()%</h1>
+</div>
+
+<hr>
+
+<div class="row column text-center">
+	<h1>Due Date</h1>
+</div>
+<div class="row column text-center">
+	<h1>$str["Status"].getComp_date()</h1>
+</div>
+
+<hr>    
+
+<div class="row column text-center">
+	<h1>Behaviors</h1>
+	
+</div>
+ 
+<div class="row">
+	#if($str["BehaviorList"].size()==0)      
+		<div class="row column text-center">
+			<h4><i>Add a new Behavior to Accomplish your Goal</i></h4>
+		</div>
+      
+	#else  
+		#foreach( $behavior in $str["BehaviorList"])
+			<a href="/behaviorview/$behavior.getObid()">
+				<div class="callout primary text-center">
+					<h3>$behavior.getBehavior()</h3>  
+				</div>
+			</a>
+	#end  
+</div>
+#end
+
+<div class="text-center">
+	<a href="/behavioradd/$str["Goal"].getGoalid()">
+		<button type="button" class="button">Add Behavior</button>
+	</a>
+</div>
+
+<hr>
+
+<div class="row column text-center">
+	<h1>Notes</h1>
+</div>
+        
+<div class="row">
+	#if($str["NoteList"].size()==0)
+		<div class="row column text-center">
+			<h4><i>Add a new Note to Track your Goal</i></h4>
+		</div>
+	#else
+		#foreach( $note in $str["NoteList"])
+			<a href="/noteview/$note.getNoteid()">
+				<div class="callout primary text-center">
+				<h3>$note.getNoteDate()</h3>
+				<p>$note.getNote()</p>   
+				</div>
+			</a>
+		#end
+	#end  
+</div>
+
+<div class="text-center">
+	<a href="/noteadd/$str["Goal"].getGoalid()">
+		<button type="button" class="button">Add Note</button>
+	</a>
+</div>
+<hr>
+#end
+
+<script>
+function confirmDelete() {
+	var r = confirm("Continue delete?");
+	if (r == true) {
+   		return true;
+	} else {
+    	return false;
+	}
+}
+</script>

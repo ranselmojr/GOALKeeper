@@ -1,0 +1,51 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+
+<div class="row column text-center">
+	<h1>Add a New Note</h1>
+</div>
+
+<form name="noteAdd" method="post" onsubmit="return validateForm()">
+	<div>Relationship:
+		<select name="relid">
+			<option disabled selected value> -- select a relationship -- </option>
+			#foreach($rel in $str["Relationships"])
+			<option value="$rel.getRelid()">$rel.getFirstname() $rel.getLastname()</option>
+			#end  
+	 	</select>
+	</div>
+
+	<div> Date: 
+		<input type="date" name="date" value="">
+	</div>
+
+	<div>Note: 
+		<textarea rows="4" cols="50" name="note"></textarea><br>
+	</div>
+
+	<div class="text-center">
+		<input style="border:transparent;padding-bottom:1px;width:100px" class="login-button" type="submit" value="Save">
+		<a href="/goalform/$str["Goal"].getGoalid()">
+			<button type="button" class="login-button" style="width:100px">Cancel</button>
+		</a>
+	</div>
+</form>
+#end
+
+<script>
+function validateForm() {
+    var x = document.forms["noteAdd"]["relid"].value;
+    var y = document.forms["noteAdd"]["date"].value;
+    var z = document.forms["noteAdd"]["note"].value;
+    if (x == "") {
+        alert("Relationship must be filled out");
+        return false;
+    } else if (y == "") {
+    	alert("Date must be filled out");
+        return false;
+    } else if (z == "") {
+    	alert("Note must be filled out");
+        return false;
+    }
+}
+</script>

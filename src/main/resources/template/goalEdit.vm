@@ -1,0 +1,41 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<div class="row column text-center">
+	<h1>Edit a Goal</h1>
+</div>
+<form name="goalEdit" method="post" onsubmit="return validateForm()">
+	<div>Goal: 
+		<input type="text" name="goal" value="$str["Goal"].getGoalText()"><br>
+	</div>
+	<div>Percent Complete: 
+		<input type="number" name="percent_comp" value="$str["Status"].getPercent_done()"><br>
+	</div>
+	<div>Due Date: 
+		<input type="date" name="due_date" value="$str["Status"].getComp_date()"><br>
+	</div>
+	<div class="text-center">
+		<input style="border:transparent;padding-bottom:1px;width:100px" class="login-button" type="submit" value="Save">
+		<a href="/goalform/$str["Goal"].getGoalid()">
+			<button type="button" class="login-button" style="width:100px">Cancel</button>
+		</a>
+	</div>
+</form>
+#end
+
+<script>
+function validateForm() {
+    var x = document.forms["goalEdit"]["goal"].value;
+    var y = document.forms["goalEdit"]["percent_comp"].value;
+    var z = document.forms["goalEdit"]["due_date"].value;
+    if (x == "") {
+        alert("Goal must be filled out");
+        return false;
+    } else if (y == "") {
+    	alert("Percent Complete must be filled out");
+        return false;
+    } else if (z == "") {
+    	alert("Due Date must be filled out");
+        return false;
+    }
+}
+</script>

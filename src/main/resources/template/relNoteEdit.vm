@@ -1,0 +1,59 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<div class="row column text-center">
+	<h1>View Note</h1>
+</div>
+
+<form name="noteView" method="post" onsubmit="return validateForm()">
+	<div>Goal:
+		<select name="goalid">
+			<option selected value="$str["Goal"].getGoalid()"> $str["Goal"].getGoalText()</option>
+			#foreach($goal in $str["GoalList"])
+			#if ($str["Goal"].getGoalid()!=$goal.getGoalid())
+  			<option value="$goal.getGoalid()">$goal.getGoalText()</option>
+			#end
+			#end  
+ 		</select>
+ 	</div>
+	<div>Date: 
+		<input type="date" name="date" value="$str["Note"].getNoteDate()">
+	</div>
+	<div>Note: 
+		<textarea rows="4" cols="50" name="note" >$str["Note"].getNote()</textarea><br>
+	</div>
+	<div class="text-center">
+		<input style="border:transparent;padding-bottom:1px;width:100px" class="login-button" type="submit" value="Save">
+		<button type="submit" onclick="return confirmDelete()" class="login-button" style="width:100px" formaction="/relnotedelete/$str["Note"].getNoteid()";>Delete</button>
+		<a href="/relationshipview/$str["Relationship"].getRelid()"><button type="button" class="login-button" style="width:100px">Cancel</button></a>
+	</div>
+</form>
+#end
+
+<script>
+function validateForm() {
+    var x = document.forms["noteView"]["goalid"].value;
+    var y = document.forms["noteView"]["date"].value;
+    var z = document.forms["noteView"]["note"].value;
+    if (x == "") {
+        alert("Relationship must be filled out");
+        return false;
+    } else if (y == "") {
+    	alert("Date must be filled out");
+        return false;
+    } else if (z == "") {
+    	alert("Note must be filled out");
+        return false;
+    }
+}
+</script>
+
+<script>
+function confirmDelete() {
+	var r = confirm("Continue delete?");
+	if (r == true) {
+   		return true;
+	} else {
+    	return false;
+	}
+}
+</script>

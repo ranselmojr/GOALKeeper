@@ -1,15 +1,15 @@
-package main.java.app.Controller;
+package app.Controller;
 
-import static main.java.app.util.RequestUtil.getSessionCurrentUser;
+import static app.util.RequestUtil.getSessionCurrentUser;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import main.java.app.Model.Goal;
-import main.java.app.Model.Note;
-import main.java.app.Model.Relationship;
-import main.java.app.Model.UserAccount;
-import main.java.app.util.Path;
-import main.java.app.util.ViewUtil;
+import app.Model.Goal;
+import app.Model.Note;
+import app.Model.Relationship;
+import app.Model.UserAccount;
+import app.util.Path;
+import app.util.ViewUtil;
 import org.apache.velocity.VelocityContext;
 import spark.Request;
 import spark.Response;

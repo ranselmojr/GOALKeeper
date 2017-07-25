@@ -1,20 +1,20 @@
-package main.java.app.Controller;
+package app.Controller;
 
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.velocity.VelocityContext;
-import main.java.app.Model.Behavior;
-import main.java.app.Model.Goal;
-import main.java.app.Model.Note;
-import main.java.app.Model.Relationship;
-import main.java.app.Model.Status;
-import main.java.app.Model.UserAccount;
-import main.java.app.util.Path;
-import main.java.app.util.ViewUtil;
+import app.Model.Behavior;
+import app.Model.Goal;
+import app.Model.Note;
+import app.Model.Relationship;
+import app.Model.Status;
+import app.Model.UserAccount;
+import app.util.Path;
+import app.util.ViewUtil;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-import static main.java.app.util.RequestUtil.*;
+import static app.util.RequestUtil.*;
 
 /**
  * Created by Kevin on 7/16/2017.

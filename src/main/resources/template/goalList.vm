@@ -1,0 +1,26 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<div class="row column text-center">
+	<a href="/goaladd">
+		<button type="button" position="absolute" top="0" right"0" class="button">Add Goal</button>
+	</a>
+	<h1>My Goals</h1>
+</div>
+
+#if($str["GoalList"].size()==0)      
+	<div class="row column text-center">
+		<h4><i>Add a new Goal</i></h4>
+	</div>   
+#else  
+	<div class="row">
+		#foreach($goal in $str["GoalList"])
+			<a href="/goalform/$goal.getGoalid()">
+				<div class="callout primary text-center">
+					<h3>Goal $foreach.count</h3>
+					<p>$goal.getGoalText()</p>   
+				</div>
+			</a>
+		#end  
+	</div>
+#end
+#end

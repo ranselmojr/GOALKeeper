@@ -322,3 +322,8 @@ form .form-icons .fa {
 
 
 /* End Question CSS */
+
+.input.login-button {
+    border:transparent;
+    padding-bottom:1px;
+}

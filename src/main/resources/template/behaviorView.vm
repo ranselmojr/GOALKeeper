@@ -1,0 +1,38 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+
+<div class="row column text-center">
+	<h1>View Behavior</h1>
+</div>
+<form name="behaviorView" method="post" onsubmit="return validateForm()">
+	<div>Behavior: 
+		<input type="text" name="behavior" value="$str["Behavior"].getBehavior()"><br>
+	</div>
+	<div class="text-center">
+		<input style="border:transparent;padding-bottom:1px;width:100px" class="login-button" type="submit" value="Save">
+		<button type="submit" onclick="return confirmDelete()" class="login-button" style="width:100px" formaction="/behaviordelete/$str["Behavior"].getObid()">Delete</button>
+		<a href="/goalform/$str["Goal"].getGoalid()"><button type="button" class="login-button" style="width:100px">Cancel</button></a>
+	</div>
+</form>
+#end
+
+<script>
+function validateForm() {
+    var x = document.forms["behaviorView"]["behavior"].value;
+    if (x == "") {
+        alert("Behavior must be filled out");
+        return false;
+    }
+}
+</script>
+
+<script>
+function confirmDelete() {
+	var r = confirm("Continue delete?");
+	if (r == true) {
+   		return true;
+	} else {
+    	return false;
+	}
+}
+</script>

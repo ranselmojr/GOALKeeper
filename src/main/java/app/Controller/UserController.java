@@ -46,7 +46,7 @@ public class UserController {
         if (getQueryLoginRedirect(request) != null) {
             response.redirect(getQueryLoginRedirect(request));
         }
-        response.redirect(Path.Web.DASHBOARD);
+        response.redirect(Path.Web.GOAL);
         return null;
     };
 

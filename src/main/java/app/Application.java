@@ -2,7 +2,6 @@ package app;
 
 import app.Controller.*;
 import app.util.*;
-
 import static spark.Spark.*;
 import static spark.debug.DebugScreen.*;
 
@@ -56,17 +55,42 @@ public class Application {
         post(Path.Web.FORGOT,        UserController.handleForgotPage);
         get(Path.Web.RESET,          UserController.resetPage);
         post(Path.Web.RESET,         UserController.handleResetPage);
-        get(Path.Web.GOAL,           GoalController.goalPage);
-
-
-
+        
+        get(Path.Web.GOAL,           GoalController.goalList);
+        get(Path.Web.GOALFORM,       GoalController.goalForm);
+        get(Path.Web.GOALADD,       GoalController.goalAddPage);
+        post(Path.Web.GOALADD,       GoalController.goalAdd);
+        get(Path.Web.GOALEDIT,       GoalController.goalEditPage);
+        post(Path.Web.GOALEDIT,       GoalController.goalEdit);
+        get(Path.Web.GOALDELETE,           GoalController.deleteGoal);  
+        get(Path.Web.BEHAVIORADD,           GoalController.addBehaviorPage);
+        post(Path.Web.BEHAVIORADD,           GoalController.addBehavior);
+        get(Path.Web.BEHAVIORVIEW,           GoalController.viewBehavior);
+        post(Path.Web.BEHAVIORVIEW,           GoalController.editBehavior);
+        get(Path.Web.BEHAVIORDELETE,           GoalController.deleteBehavior);
+        get(Path.Web.NOTEADD,           GoalController.viewNote);
+        post(Path.Web.NOTEADD,           GoalController.addNote);
+        get(Path.Web.NOTEVIEW,           GoalController.editNotePage);
+        post(Path.Web.NOTEVIEW,           GoalController.editNote);
+        get(Path.Web.NOTEDELETE,           GoalController.deleteNote);
+        
+        get(Path.Web.RELATIONSHIPLIST,           RelationshipController.relationshipList);
+        get(Path.Web.RELATIONSHIPADD,       RelationshipController.relationshipAddPage);
+        post(Path.Web.RELATIONSHIPADD,       RelationshipController.relationshipAdd);
+        get(Path.Web.RELATIONSHIPVIEW,       RelationshipController.relationshipView);
+        get(Path.Web.RELATIONSHIPDELETE,           RelationshipController.deleteRelationship);
+        get(Path.Web.RELNOTEADD,           RelationshipController.viewRelNote);
+        post(Path.Web.RELNOTEADD,           RelationshipController.addRelNote);
+        get(Path.Web.RELNOTEEDIT,           RelationshipController.editRelNotePage);
+        post(Path.Web.RELNOTEEDIT,           RelationshipController.editRelNote);
+        get(Path.Web.RELNOTEDELETE,           RelationshipController.deleteRelNote);
+        get(Path.Web.RELATIONSHIPEDIT,       RelationshipController.relationshipEditPage);
+        post(Path.Web.RELATIONSHIPEDIT,      RelationshipController.relationshipEdit);
 
         get("*",                     ViewUtil.notFound);
 
         //Set up after-filters (called after each get/post)
         after("*",                   Filters.addGzipHeader);
-
-
 
     }
 }

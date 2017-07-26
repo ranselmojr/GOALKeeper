@@ -1,0 +1,88 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<div class="row column text-center">
+	<a href="/relationshipadd">
+		<button type="button" position="absolute" top="0" right"0" class="button">Add Relationship</button>
+	</a>
+	<h1>My Relationships</h1>
+</div>
+
+<hr>
+
+#if($str["RelationshipList"].size()==0)      
+	<div class="row column text-center">
+		<h4><i>Add a new Relationship</i></h4>
+	</div>   
+#else  
+	
+<div class="row column text-center">
+<h2>Superiors</h2>
+</div>
+#if($str["Superiors"].size()==0)      
+	<div class="row column text-center">
+		<h4><i>No Superiors</i></h4>
+	</div>   
+#else
+	
+<div class="row">
+		#foreach($relationship in $str["Superiors"])
+		
+			<a href="/relationshipview/$relationship.getRelid()">
+				<div class="callout primary text-center">
+					<h2>$relationship.getFirstname() $relationship.getLastname()</h2>   
+				</div>
+			</a>
+		 
+		</div>
+		#end
+		#end
+		<hr>
+<div class="row column text-center">
+<h2>Peers</h2>
+</div>
+
+#if($str["Peers"].size()==0)      
+	<div class="row column text-center">
+		<h4><i>No Peers</i></h4>
+	</div>   
+#else
+<div class="row">
+		#foreach($relationship in $str["Peers"])
+		
+			<a href="/relationshipview/$relationship.getRelid()">
+				<div class="callout primary text-center">
+					<h2>$relationship.getFirstname() $relationship.getLastname()</h2>   
+				</div>
+			</a>
+		 
+		</div>
+		#end
+		#end
+		<hr>
+		
+<div class="row column text-center">
+<h2>Direct Reports</h2>
+</div>
+
+#if($str["DirectReports"].size()==0)      
+	<div class="row column text-center">
+		<h4><i>No Direct Reports</i></h4>
+	</div>   
+#else
+
+<div class="row">
+		#foreach($relationship in $str["DirectReports"])
+		
+			<a href="/relationshipview/$relationship.getRelid()">
+				<div class="callout primary text-center">
+					<h2>$relationship.getFirstname() $relationship.getLastname()</h2>   
+				</div>
+			</a>
+		 
+		</div>
+		#end
+		#end
+		<hr>
+<hr>
+#end
+#end

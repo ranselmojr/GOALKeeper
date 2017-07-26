@@ -1,0 +1,62 @@
+#parse("/template/layout.vm")
+#@mainLayout()
+<div class="row column text-center">
+	<h1>Add a New Relationship</h1>
+</div>
+<form name="relationshipAdd" method="post" onsubmit="return validateForm()">
+	<div>First Name: 
+		<input type="text" name="fname" value="">
+	</div>
+	<div>Last Name: 
+		<input type="text" name="lname" value="">
+	</div>
+	<div>Phone: 
+		<input type="tel" name="phone" value="">
+	</div>
+	<div>Email: 
+		<input type="email" name="email" value="">
+	</div>
+	<div>Catergory:
+		<select name="category">
+			<option disabled selected value> -- select a relationship -- </option>
+  			<option value="Superior">Superior</option>
+  			<option value="Peer">Peer</option>
+  			<option value="Direct Report">Direct Report</option>
+		</select>
+	</div>
+	
+
+	<div class="text-center">
+		<input style="border:transparent;padding-bottom:1px;width:100px" class="login-button" type="submit" value="Save">
+		<a href="/relationshiplist">
+			<button type="button" class="login-button" style="width:100px">Cancel</button>
+		</a>
+	</div>
+</form>
+#end
+
+<script>
+function validateForm() {
+    var a = document.forms["relationshipAdd"]["fname"].value;
+    var b = document.forms["relationshipAdd"]["lname"].value;
+    var c = document.forms["relationshipAdd"]["phone"].value;
+    var d = document.forms["relationshipAdd"]["email"].value;
+    var e = document.forms["relationshipAdd"]["catergory"].value;
+    if (a == "") {
+        alert("First name must be filled out");
+        return false;
+    } else if (b == "") {
+    	alert("Last name must be filled out");
+        return false;
+    } else if (c == "") {
+    	alert("Phone must be filled out");
+        return false;
+    } else if (d == "") {
+    	alert("Email must be filled out");
+        return false;
+    } else if (e == "") {
+    	alert("Category must be filled out");
+        return false;
+    }
+}
+</script>
